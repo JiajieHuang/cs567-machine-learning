@@ -1,0 +1,137 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx} 
+\usepackage{epsfig} 
+\usepackage{amsmath}
+\begin{document}
+\noindent1.1\\
+	 The matrix is 
+\begin{equation}
+K=
+\begin{bmatrix}
+1  &  0  & \cdots\ &0\\
+0  &  1  & \cdots\ & 0\\
+ \vdots   & \vdots & \ddots  & \vdots  \\
+ 0 & 0  & \cdots\ & 1\\
+\end{bmatrix}
+\end{equation}
+we can know that the eigenvalue of K is $\lambda_1=\lambda_2=\cdots=\lambda_n=1$. All positive.So it is SDP.\\
+
+\noindent1.2\\
+	From the answer of Q1.1, we can know that K=I.
+	From the slides we know that $\alpha=K^{-1}y=y$.
+	$$J(\alpha)=\frac{1}{2}\alpha^T\alpha-y^T\alpha+\frac{\lambda}{2}\alpha^T\alpha+\frac{1}{2}y^Ty$$
+	$$=\frac{1}{2}y^Ty-y^Ty+\frac{1}{2}y^Ty=0$$
+
+\noindent1.3\\
+	$$w^*=\Phi^T(K)^{-1}y=\Phi^Ty$$
+	$$X_{new}w^*=\phi(X_{new})\Phi^Ty$$
+	$$=[\phi(X_{1})\phi(X_{new})^T \phi(X_{2})\phi(X_{new})^T \cdots \phi(X_{n})\phi(X_{new})^T]y$$
+	$$=[K_{1new} K_{2new} \cdots K_{nnew}]y=0$$\\
+
+\noindent2.1\\
+	Assume it is linear separable. Assume the classifier is $y=sign[w_1x+b]$.\\
+	Then $w_1$ and b should match:
+	$$b>0\ (1)$$
+	$$w_1+b<0\ (2)$$
+	$$-w_1+b<0\ (3)$$
+	Add (2) and (3), we know b<0,whch contradicts (1).\\
+	So it is not linear separable.\\
+
+\noindent2.2\\
+	\includegraphics[width=4in]{Q2_2.png}\\
+	It is linear separable now. $x_2=0.5$ can linearly separate two classes.\\
+
+\noindent2.3\\
+	$$k(x,x')=(x)(x')+(x^2)(x'^2)=xx‘+(xx')^2$$
+	$K_{11}=(-1,1)(-1,1)=2,K_{12}=(-1,1)(1,1)=0,K_{13}=(-1,1)(0,0)=0,K_{22}=(1,1)(1,1)=2,K_{23}=(1,1)(0,0)=0,K_{33}=(0,0)(0,0)$\\
+	$K=K^T.$
+	So
+\begin{equation}
+K=
+\begin{bmatrix}
+2  &  0  & 0\\
+0  &  2  & 0\\
+0  & 0& 0  \\
+\end{bmatrix}
+\end{equation}
+
+\noindent2.4\\
+	primer:
+	
+	$$min\ \frac{w_1^2+w_2^2+b^2}{2}$$
+	\begin{equation}
+	\begin{cases}
+	b>0\\
+	-w_1+w_2+b>=1\\
+	w_1+w_2+b>=1\\
+	\end{cases}
+	\end{equation}
+	dual:
+	$$min\ \alpha_2^2+\alpha_3^2-\alpha_1-\alpha_2-\alpha_3\ (0)$$
+	\begin{equation}
+	\begin{cases}
+	\alpha_1>=0\ \ \ \ \ \ \ \ \ \ \ \ (1)\\
+	\alpha_2>=0\ \ \ \ \ \ \ \ \ \ \ \ (2)\\
+	\alpha_3>=0\ \ \ \ \ \ \ \ \ \ \ \ (3)\\
+	\alpha_1-\alpha_2-\alpha_3=0\ (4)
+	\end{cases}
+	\end{equation}
+
+\noindent2.5\\
+	Add (4) and(0)  we know we just need to minimize $\alpha_2^2+\alpha_3^2-2\alpha_2-2\alpha_3$\\
+	So $\alpha_2=1,\alpha_3=1,\alpha_1=2$
+	Then b=1/2=0.5,$-w_1+w_2+b=1/1=1,w_1+w_2+b=1$\\
+	$w=[0,0.5],b=0.5$\\
+\noindent2.6\\
+		\includegraphics[width=4in]{Q261.png}\\
+		\includegraphics[width=4in]{262.png}\\
+
+\noindent3.1\\
+	(s,b,d)=(1,0.5,2)\\
+	$\epsilon_1=\frac{1}{4}+\frac{1}{4}=\frac{1}{2}$\\
+	$\beta_1=\frac{1}{2}log{\frac{1-1/2}{1/2}}=0$\\
+\noindent3.2\\
+	$$w_2(1)=w_1(1)e^{\beta_1}=\frac{1}{4}*1=\frac{1}{4}$$
+	$$w_2(2)=w_1(2)e^{\beta_1}=\frac{1}{4}*1=\frac{1}{4}$$
+	$$w_2(3)=w_1(3)e^{-\beta_1}=\frac{1}{4}*1=\frac{1}{4}$$
+	$$w_2(4)=w_1(4)e^{-\beta_1}=\frac{1}{4}*1=\frac{1}{4}$$
+
+\noindent3.3\\
+	(s,b,d)=(1,-0.5,2)\\
+	$\epsilon_1=\frac{1}{4}=\frac{1}{4}$\\
+	$\beta_1=\frac{1}{2}log{\frac{1-1/4}{1/4}}=0.55$\\
+
+\noindent3.4\\
+	$$w_2(1)=w_1(1)e^{\beta_1}=0.43$$
+	$$w_2(2)=w_1(2)e^{-\beta_1}=0.14$$
+	$$w_2(3)=w_1(3)e^{-\beta_1}=0.14$$
+	$$w_2(4)=w_1(4)e^{-\beta_1}=0.14$$
+	Nomalize:
+	$$w_2(1)=0.51$$
+	$$w_2(2)=0.16$$
+	$$w_2(3)=0.16$$
+	$$w_2(4)=0.16$$
+      $$f2=(-1,0.5,2)$$
+	$$\epsilon_2=0.16$$\\
+	$$\beta_2=\frac{1}{2}log{\frac{1-0.16}{0.16}}=0.829$$\\
+
+\noindent3.5\\
+	$$w_3(1)=w_2(1)e^{-\beta_2}=0.19$$
+	$$w_3(2)=w_2(2)e^{-\beta_2}=0.07$$
+	$$w_3(3)=w_2(3)e^{\beta_2}=0.37$$
+	$$w_3(4)=w_2(4)e^{-\beta_2}=0.07$$
+	Nomalize:
+	$$w_3(1)=0.27$$
+	$$w_3(2)=0.1$$
+	$$w_3(3)=0.53$$
+	$$w_3(4)=0.1$$
+      $$f3=(1,0.5,1)$$
+	$$\epsilon_2=0.1$$\\
+	$$\beta_3=\frac{1}{2}log{\frac{1-0.1}{0.1}}=1.09$$\\
+
+\noindent3.6\\
+	$$ F(x)=sign[0.55h_{(1,0.5,2)}+0.829h_{(-1,0.5,2)}+1.09h_{(1,0.5,1)}]$$
+	x1 is assigned -1,x2 is assigned 1,x3 is assigned -1,x4 is assigned 1. All 4 are correctly assigned.
+	
+
+\end{document}

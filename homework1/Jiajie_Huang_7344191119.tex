@@ -1,0 +1,30 @@
+\documentclass[11pt]{article}
+
+\begin{document}
+\noindent1.1\\
+	 The number of training data $<$ dimensionality of $\omega$\\
+
+
+
+\noindent1.2\\
+	 We know$$RSS=\sum_{n}(y-(\omega^Tx_n+b))^2$$
+	 Then take the derivative$$\frac{\partial RSS}{\partial b}=\sum_{n}2(\omega^Tx_n+b-y_n)=0$$                                  
+		                                    $$=\sum_{n}2(\omega^Tx_n)+\sum_{n}2(b-y_n)=0$$  
+      From the question we know:
+	$$\frac{1}{N}\sum_{n}x_{nd}=0$$
+	$$1_NX=0_N$$
+      $$ 1_NX\omega=\sum_{n}(\omega^Tx_n)=0$$
+	plug in:
+	$$\sum_{n}2(b^*-y_n)=0$$
+      $$b^*=\frac{1}{N}\sum_{n}y_n$$\\
+2.1\\
+	The error function:
+	$$min\epsilon(b)=-\sum_{n} [{y_nlog\sigma(b)+(1-y_n)log(1-\sigma(b))}]$$
+	Take derivatives:
+	$$\frac{\partial{\epsilon}}{\partial{b}}=\sum_{n}[\frac{y_n\sigma'(b)}{\sigma(b)}-(1-y_n)\frac{\sigma'(b)}{1-\sigma(b)}]=0$$
+	$$\sum_n[\frac{y_n}{\sigma(b)}-\frac{1-y_n}{1-\sigma(b)}]=0$$
+	$$\sum_n[y_n-\sigma(b)]=0$$
+	$$b=\sigma^{-1}(\frac{\sum_{n}{y_n}}{N})=log(\frac{\frac{\sum_{n}{y_n}}{N}}{1-\frac{\sum_{n}{y_n}}{N}})$$
+	The optimal classifier will be assign the sample to y=1 in probability $\frac{\sum_{n}{y_n}}{N}$ ,y=0 in probability $1-\frac{\sum_{n}{y_n}}{N}$
+	The probability of assigning a sample to y=1 is $\frac{\sum_{n}{y_n}}{N}$
+\end{document}

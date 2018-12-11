@@ -1,0 +1,46 @@
+\documentclass[11pt]{article}
+\usepackage{bm}
+\usepackage{amsmath}
+\begin{document}
+
+	Q1.1
+	$$\frac{\partial{l}}{\partial{u_i}}=\frac{\partial{l}}{\partial{h_i}}\frac{\partial{h_i}}{\partial{u_i}}$$
+	So$$ \frac{\partial{l}}{\partial{\bm{u}}}=\frac{\partial{l}}{\partial{\bm{h}}}.*\frac{\partial{\bm{h}}}{\partial{\bm{u}}}$$
+		$$=\frac{\partial{l}}{\partial{\bm{a}}}*\frac{\partial{\bm{a}}}{\partial{\bm{u}}}.*\bm{H(u)}^T$$
+		$$=\frac{\partial{l}}{\partial{\bm{a}}}*\frac{\partial({\bm{W^{(2)}h+b^{(2)}}})}{\partial{\bm{h}}}.*\bm{H(u)}^T$$
+		$$=\frac{\partial{l}}{\partial{\bm{a}}}*\bm{W^{(2)}.*H(u)}^T$$\\
+
+	$$\frac{\partial{l}}{\partial{ai}}=\frac{\partial{l}}{\partial{z_i}}*\frac{\partial{z_i}}{\partial{a_i}}$$
+	$$=-(y_i==k)*\frac{1}{z_i}*(z_i*(1-z_i))$$
+	$$=-(y_i==k)*(1-z_i)$$
+	$$\frac{\partial{l}}{\partial{\bm{a}}}=\bm{y^Tz-y^T}$$\\
+	
+
+	$$\frac{\partial{l}}{w_{ji}^{(1)}}=\frac{\partial{l}}{\partial{uj}}\frac{\partial{uj}}{\partial{w_{ji}^{(1)}}}=\frac{\partial{l}}{\partial{uj}}*x_i$$\\
+	$$\frac{\partial{l}}{\partial{\bm{W^{(1)}}}}=(\frac{\partial{l}}{\partial{\bm{u}}})^T*\bm{x^T}$$\\
+	$$\frac{\partial{l}}{\partial{\bm{b^{(1)}}}}=\frac{\partial{l}}{\partial{\bm{u}}}\frac{\partial{\bm{u}}}{\partial{\bm{b}}}=\frac{\partial{l}}{\partial{\bm{u}}}$$\\
+	$$\frac{\partial{l}}{w_{ji}^{(2)}}=\frac{\partial{l}}{\partial{aj}}\frac{\partial{aj}}{\partial{w_{ji}^{(2)}}}=\frac{\partial{l}}{\partial{uj}}*h_i$$
+	$$\frac{\partial{l}}{\partial{\bm{W^{(2)}}}}=(\frac{\partial{l}}{\partial{\bm{a}}})^T*\bm{h}^T$$
+
+	Q1.2
+			Because $\bm{W^{(1)},W^{(2)},b^{(1)}}$are all initialed to zero and from the above derivation, the gradient $\frac{\partial{l}}{\partial{\bm{W^{(1)}}}},\frac{\partial{l}}{\partial{\bm{W^{(2)}}}},\frac{\partial{l}}{\partial{\bm{b^{(1)}}}}$ are all 0.
+
+	Q 1.3 
+			$$\bm{a=W^{(2)}u+b^{(2)}}$$
+			$$\bm{=W^{(2)}(W^{(1)}x+b^{(1)})+b^{(2)}}$$
+			$$\bm{=W^{(2)}W^{(1)}x+W^{(2)}b^{(1)}+b^{(2)}}$$
+			$$\bm{U=W^{(2)}W^{(1)}}$$
+			$$\bm{v=W^{(2)}b^{(1)}+b^{(2)}}$$
+
+	Q2.1
+		$$\frac{\partial{l}}{\partial{\bm{w}}}=\sum_{n}{\frac{\partial{l(s,y_n)}}{\partial{s}}\frac{\partial{s}}{\partial{\bm{w}}}}+\lambda \bm{w}$$
+		$$\sum_{n}{\frac{\partial{l(s,y_n)}}{\partial{s}}}\bm{\phi(x_n)}+\lambda \bm{w^*}=0$$
+		$$\bm{w^*}=-\frac{\sum_{n}{\frac{\partial{l(s,y_n)}}{\partial{s}}}\bm{\phi(x_n)}}{\lambda}$$
+	Q2.2
+		$$\bm{w^*}=\bm{\Phi^T\alpha}$$
+		$$ \sum_{n}l(\bm{w^T{\phi(x_n)}},y_n)+\frac{\lambda}{2}||\bm{w}||_2^2$$
+		$$=\sum_{n}l(\bm{\alpha^T\Phi(x)\phi(x_n)},y_n)+\frac{\lambda}{2}||\bm{w}||_2^2$$
+		$$ =\sum_{n}l(\bm{\alpha}^T[K_{1n},K_{2n},\cdots,K_{nn}]^T,y_n)+\frac{\lambda}{2}||\bm{w}||_2^2$$
+
+\end{document}
+
